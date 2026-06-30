@@ -47,7 +47,7 @@ try{
   const token = jwt.sign({
     id:user._id, 
     email:user.email
-  },process.env.SECRET_KEY,{expiresIn:"1d"})
+  },process.env.SECRET_KEY,{expiresIn:"2d"})
   res.status(200).json({
     success:true,
     message:"login success",
@@ -70,7 +70,10 @@ const profile=(req,res)=>{
     user:req.user
    })
 };
-const logout=()=>{
-
+const logout=(req,res)=>{
+     res.json({
+      success:true,
+      message:"logged out successfully"
+     })
 };
 module.exports={register,login,profile,logout};
